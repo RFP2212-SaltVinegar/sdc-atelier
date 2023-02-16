@@ -5,6 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const router = require('./routes');
 
 const app = express();
 
@@ -12,6 +13,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
+
+app.use('/reviews', router);
 
 app.use(express.static(path.join(__dirname, '../test')));
 
