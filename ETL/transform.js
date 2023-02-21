@@ -19,7 +19,6 @@ const transform = (data, numbers, nVals) => {
 };
 
 module.exports = (csvName, numbers, nVals, field) => {
-  console.log(path.join(__dirname, `./csv/${csvName}.csv`));
   CSVToJSON().fromFile(path.join(__dirname, `./csv/${csvName}.csv`)).then((source) => {
     const transformed = transform(source, numbers, nVals);
     const csv = JSONToCSV(transformed, {
