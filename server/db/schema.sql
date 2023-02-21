@@ -7,28 +7,32 @@ CREATE TABLE reviews (
   id INTEGER PRIMARY KEY NOT NULL,
   product_id INTEGER,
   rating INTEGER,
+  date TEXT,
   summary TEXT,
-  recommend BOOLEAN,
   body TEXT,
+  recommend BOOLEAN,
+  reported BOOLEAN,
   name VARCHAR(50),
-  email VARCHAR(100)
-)
+  email VARCHAR(100),
+  response TEXT,
+  helpfulness INTEGER DEFAULT 0
+);
 
 CREATE TABLE photos (
   id INTEGER PRIMARY KEY NOT NULL,
   url TEXT,
-  review_id NUMERIC REFERENCES reviews (id) NOT NULL,
-)
+  review_id INTEGER REFERENCES reviews (id) NOT NULL
+);
 
 CREATE TABLE characteristics (
   id INTEGER PRIMARY KEY NOT NULL,
   product_id INTEGER NOT NULL,
-  description VARCHAR(50),
-)
+  description VARCHAR(50)
+);
 
 CREATE TABLE characteristics_reviews (
   id INTEGER PRIMARY KEY NOT NULL,
-  review_id NUMERIC REFERENCES reviews (id) NOT NULL,
-  characteristics_id NUMERIC REFERENCES characteristics (id) NOT NULL,
-  rating INTEGER,
-)
+  review_id INTEGER REFERENCES reviews (id) NOT NULL,
+  characteristics_id INTEGER REFERENCES characteristics (id) NOT NULL,
+  rating INTEGER
+);
