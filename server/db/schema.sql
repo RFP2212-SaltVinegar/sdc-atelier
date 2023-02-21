@@ -24,8 +24,8 @@ COPY reviews
 
 CREATE TABLE photos (
   id INTEGER PRIMARY KEY NOT NULL,
-  url TEXT,
-  review_id INTEGER REFERENCES reviews (id) NOT NULL
+  review_id INTEGER REFERENCES reviews (id) NOT NULL,
+  url TEXT
 );
 
 COPY photos
