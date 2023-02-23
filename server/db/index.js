@@ -8,6 +8,23 @@ const client = new Client({
   database: process.env.DATABASE,
 });
 
-client.connect();
+client.connect()
+  .then(() => console.log('connected'));
 
 module.exports = client;
+
+// client.query('SELECT * FROM reviews', (err, res) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(res);
+//   }
+// });
+
+// client.query('INSERT INTO reviews VALUES (1,1)', (err, res) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(res);
+//   }
+// });
